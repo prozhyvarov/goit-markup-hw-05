@@ -12,6 +12,8 @@
   --navy-blue-modal-overlay: #2e2f42;
   --grey-hero-image-background: #2e2f42;
   --clean-white: #ffffff;
+  --transition-dur-and-cub: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  --modal-background-color: #FCFCFC;
 }
 
 h1,
@@ -559,7 +561,7 @@ body {
 
 .examples-par {
   margin-top: 8px;
-  
+
 }
 
 .examples-item-div {
@@ -571,4 +573,117 @@ body {
   border-bottom: 1px solid var(--corn-flower-accent-color); */
 }
 
+.examples-wrapper {
+  position: relative;
+}
+
+.overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 360px;
+  height: 300px;
+  opacity: 0;
+  overflow-y: auto;
+  transform: translate(0, 100%);
+  transition: transform var(--transition-dur-and-cub);
+  
+
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5; 
+
+  padding-top: 40px;
+  padding-left: 32px;
+  padding-right: 32px;
+
+  background-color: var(--iris-primary-color);
+  color: var(--cloud-light-mode-color)
+
+}
+
+.examples-wrapper:hover .overlay{
+  opacity: 1;
+  transform: translate(0, 0);
+}
+/* .overlay {
+
+  transform: translate(0, 100%);
+  opacity: 0;
+
+  transition: transform var(--transition-dur-and-cub);
+
+} */
+
+
 /*=========================/PORTFOLIO=========================*/
+/*=========================MODAL WINDOW=========================*/
+
+.backdrop {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(46, 47, 66, 0.4);
+
+  transition: opacity var(--transition-dur-and-cub), visibility var(--transition-dur-and-cub);
+
+}
+
+.modal {
+  position: absolute;
+  width: 408px;
+  height: 576px;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background: var(--modal-background-color);
+  box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.14), 0px 1px 3px rgba(0, 0, 0, 0.12), 0px 2px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+.modal-close-btn {
+  position: absolute;
+  right: 24px;
+  top: 24px;
+
+  transition: background-color var(--transition-dur-and-cub);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  padding: 0;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+
+}
+
+.modal-class-btn-icon {
+  transition: fill var(--transition-dur-and-cub);
+}
+
+.modal-close-btn:hover,
+.modal-close-btn:focus {
+  background-color: var(--ocean-pressed-state-color);
+}
+
+.modal-close-btn:hover .modal-class-btn-icon,
+.modal-close-btn:focus .modal-class-btn-icon {
+  fill: var(--clean-white);
+}
+
+.backdrop.is-hidden {
+  visibility: hidden;
+  opacity: 0;
+  pointer-events: none;
+}
+
+/*=========================/MODAL WINDOW=========================*/
